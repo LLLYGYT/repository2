@@ -1,18 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent" >
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Text 1"
+            android:textColor="#EA5246"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text 2"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#EA5246"
+            android:textStyle="bold|italic"
+            android:background="#000000"/>
+
+
+
+    </LinearLayout>
+    <!--
+       <TextView
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#55ff0000"
+            android:gravity="center"
+            android:text="相对布局的使用" />
+
+        <TextView
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/maine"
+            android:layout_below="@+id/main"
+            android:background="#5500ff00"
+            android:text="二级标题"
+            tools:ignore="UnknownId" />
+
+    -->
+
 
     <TextView
+        android:id="@+id/text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ldh_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Text 3"
+        android:gravity="center"
+        android:textColor="#EA5246"
+        android:textStyle="bold|italic"
+        android:background="#000000"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text 4"
+        android:gravity="center"
+        android:textColor="#EA5246"
+        android:textStyle="bold|italic"
+        android:background="#000000"
+        android:layout_marginTop="20dp"
+
+        android:layout_alignParentRight="true"
+        tools:ignore="NotSibling" />
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/aa" />
+
+<!--
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:layout_marginTop="200dp"
+        android:progress="18" />
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:indeterminate="true" />
+
+
+-->
+<!--
+    <ProgressBar
+        android:id="@+id/progressBar_1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        />
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"/>
+
+    <ProgressBar
+        android:id="@+id/sb_no_beautiful"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:max="100"
+        android:progress="50"
+        android:secondaryProgress="70" />
+-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_marginTop="300dp"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+
+        android:layout_width="400dp"
+        android:layout_height="55dp" />
+
+
+    <TextView
+        android:layout_marginTop="300dp"
+        android:text="进度条值为："
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>
