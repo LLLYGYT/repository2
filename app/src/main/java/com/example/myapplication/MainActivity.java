@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView textView;
     int i = 0;
+
+
+
 
 
     @Override
