@@ -7,8 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
@@ -19,11 +18,39 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
+        /*
+        ImageView imageView = findViewById(R.id.imageview1);
+        String imageUrl = "https://i1.hdslb.com/bfs/archive/b70ae1c92ab59156dcbaedcd61dbf566f7c27eab.jpg";
+        Picasso.get().load(imageUrl).into(imageView);
+
+
+         */
+
+
+        ImageView imageView = findViewById(R.id.imageView);
+        String imageUrl = "https://example.com/image.jpg";
+        Glide.with(this).load(imageUrl).into(imageView);
+
+
+
+
+      /*  super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressBar = findViewById(R.id.progressBar);//初始化
         textView = findViewById(R.id.text);
@@ -50,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 100, 100);//每一秒循环一次
+        }, 100, 100);//每一秒循环一次*/
     }
 }
 
