@@ -36,14 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //页面的跳转
-        button1=findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,nextActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         //progressBar = findViewById(R.id.progressBar);//初始化
         /*textView = findViewById(R.id.text);*/
@@ -77,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         , 100, 100);//每一秒循环一次
+
+        button1=findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,nextActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Intent intent1=new Intent(this,nextActivity.class);
         intent1.putExtra("ELEMENT",element);
