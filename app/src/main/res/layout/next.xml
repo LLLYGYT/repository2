@@ -14,7 +14,7 @@
         android:layout_centerInParent="true" />
 
     <Button
-        android:text="返回页面1"
+        android:text="返回"
         android:id="@+id/next_button_fanhui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
