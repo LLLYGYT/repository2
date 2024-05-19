@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,24 +17,25 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     int i = 0;
 
+    int flag_main_1=1;
+    int flag_main_2=1;
     Button button1;
-    ProgressBar progressBar;
-    TextView textView;
+//    ProgressBar progressBar;
+//    TextView textView;
     ArrayList<String> shenglvehao=new ArrayList<String>();
     String element=".";
-    int flag0=1;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         shenglvehao.add(".");
         shenglvehao.add("..");
         shenglvehao.add("...");
         //progressBar = findViewById(R.id.progressBar);//初始化
         /*textView = findViewById(R.id.text);*/
 
+        //按下按钮 页面的跳转
         button1=findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,16 +45,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //传参数给nextactivity
         Intent intent1=new Intent(this,nextActivity.class);
         intent1.putExtra("ELEMENT",element);
         startActivity(intent1);
 
-        //页面的跳转
+
+        //变化的按钮文字
         Timer timer = new Timer();//设置计时器，学一下线程
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if(flag0==1){
+
                 runOnUiThread(new Runnable() {//将子线程传回到主线程更新到UI
                     @Override
                     public void run() {
@@ -67,28 +68,18 @@ public class MainActivity extends AppCompatActivity {
                             if(i==0){
                                 i=i+1;
                             }
-                            element=shenglvehao.get(i-1);
-                            button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
-                        }
+                            if(flag_main_1==1){
+                                element=shenglvehao.get(i-1);
+                                button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
+                            }
+                       }
                     }
                 });
             }
-        }
         }, 100, 100);//每一秒循环一次
 
 
-        int flag=1;
-        String element4=new String();
-        Bundle bundle4=getIntent().getExtras();
-        if(bundle4!=null){
-            element4= bundle4.getString("ELEMENT_2");
-            flag=2;
-            flag0=2;
-        }
-        if(flag==2&&flag0==2){
-            button1.setText("领域展开"+element4);
 
-        }
 
 
 
@@ -128,6 +119,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 100, 100);//每一秒循环一次*/
 
+        String element4=new String();
+        Bundle bundle4=getIntent().getExtras();
+        if(bundle4!=null){
+            element4=bundle4.getString("ELEMENT3");
+            flag_main_1=2;
+            flag_main_2=2;
+        }
+        if(flag_main_1==2&&flag_main_2==2&&element4!=null){
+            button1.setText("领域展开"+element4);
+        }
 
     }
 }
