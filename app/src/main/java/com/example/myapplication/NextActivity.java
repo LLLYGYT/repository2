@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class nextActivity extends AppCompatActivity {
+public class NextActivity extends AppCompatActivity {
     Button button1;
     public int flagxxx=1;
 
@@ -27,7 +27,7 @@ public class nextActivity extends AppCompatActivity {
         }
         TextView textView = (TextView) findViewById(R.id.next_page);
         if (element2!=null){
-            textView.setText("领域展开"+element2);
+            textView.setText(element2);
             element3=element2;
         }
 
@@ -42,7 +42,7 @@ public class nextActivity extends AppCompatActivity {
         });
         Intent intent3 = new Intent(this, MainActivity.class);
         if(flagxxx ==2)
-        {
+        {// 下面这段永远不会执行，以intent的方式跳转，每次都会new出来新的 NextActivity，flagxxx 永远会被重置
             intent3.putExtra("ELEMENT_3",element3);
             startActivity(intent3);
         }

@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView textView;
     ArrayList<String> shenglvehao=new ArrayList<String>();
-    String element=".";
     int flag0=1;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,14 +40,12 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,nextActivity.class);
+                Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                intent.putExtra("ELEMENT",button1.getText());
                 startActivity(intent);
             }
         });
 
-        Intent intent1=new Intent(this,nextActivity.class);
-        intent1.putExtra("ELEMENT",element);
-        startActivity(intent1);
 
         //页面的跳转
         Timer timer = new Timer();//设置计时器，学一下线程
@@ -67,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
                             if(i==0){
                                 i=i+1;
                             }
-                            element=shenglvehao.get(i-1);
                             button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
                         }
                     }
                 });
             }
         }
-        }, 100, 100);//每一秒循环一次
+        }, 1000, 1000);//1s=1000ms，光看表象就不对，变得那么快怎么是1s
 
 
         int flag=1;
