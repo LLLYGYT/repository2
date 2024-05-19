@@ -16,22 +16,8 @@ public class NextActivity extends AppCompatActivity {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.next);
 
-       Intent intent=getIntent();
-       Bundle bundle = getIntent().getExtras();
-       String name=bundle.getString("button-text");
 
 
-
-
-       String element2 = new String();
-
-       if (bundle != null) {
-           element2 = bundle.getString("ELEMENT");
-       }
-       TextView textView = (TextView) findViewById(R.id.next_page);
-       if (element2 != null) {
-           textView.setText("领域展开"+element2);
-       }
 
        Button next_button_fanhui = findViewById(R.id.next_button_fanhui);
 
@@ -44,7 +30,27 @@ public class NextActivity extends AppCompatActivity {
                setResult(1001,intent);
                finish();
                flag=1;
+
+
+
            }
+
+
+
         });
-    }
+
+           Intent intent=getIntent();
+           Bundle bundle=getIntent().getExtras();
+           String textname=bundle.getString("button-text");
+           TextView textView=(TextView)findViewById(R.id.next_page);
+           String element=bundle.getString("button-text");
+           if(element!=null){
+               textView.setText(element);
+           }
+           else{
+               textView.setText(" ");
+           }
+
+       }
+
 }
