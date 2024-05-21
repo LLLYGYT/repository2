@@ -5,7 +5,7 @@
     android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
         android:scaleType="centerInside"
@@ -93,7 +93,6 @@
         android:textStyle="bold|italic"
         android:background="#000000"
         android:layout_marginTop="20dp"
-
         android:layout_alignParentRight="true"
         tools:ignore="NotSibling" />
 
@@ -105,9 +104,9 @@
         android:src="@drawable/aa" />
 
     <ImageView
+        android:id="@+id/imageview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageview1"
         android:layout_marginTop="200dp"/>
 
     <Button
@@ -116,7 +115,6 @@
         android:text="领域展开"
         android:id="@+id/button1"
         android:layout_marginTop="200dp"/>
-
 
 <!--
     <ProgressBar
@@ -199,8 +197,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     -->
-
-
-
 
 </RelativeLayout>
