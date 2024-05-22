@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -19,31 +21,72 @@ public class MainActivity extends AppCompatActivity {
 //    TextView textView;
     ArrayList<String> shenglvehao=new ArrayList<String>();
     String element1 =".";
+    String name3="aaa";
+
+
+
+
+
+
     @SuppressLint("MissingInflatedId")
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         shenglvehao.add(".");
         shenglvehao.add("..");
         shenglvehao.add("...");
-
         button1=findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
             @Override
+
+
             public void onClick(View v) {
+
                 //传参数给next页面
+                String dataToSend=button1.getText().toString();
                 Intent intent1=new Intent(MainActivity.this,NextActivity.class);
-                intent1.putExtra("button-text",button1.getText().toString());
+                intent1.putExtra("data",dataToSend);
                 startActivityForResult(intent1,1000);
                 flag=1;
+
             }
+
+            public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+                MainActivity.super.onActivityResult(requestCode,resultCode,data);
+                if(requestCode==1000){
+                    if(resultCode == 1001&&data!=null){
+                        name3=data.getStringExtra("dataFromNext");
+                    }
+                }
+            }
+
+
+
         });
+
+
+
+
+
+
         //变化的按钮文字
         Timer timer = new Timer();//设置计时器，学一下线程
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+
                 runOnUiThread(new Runnable() {//将子线程传回到主线程更新到UI
                     @Override
                     public void run() {
@@ -59,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 element1 =shenglvehao.get(i-1);
                                 button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
+                            }
+                            if(flag==1){
+                                Intent intent2=getIntent();
+                                onActivityResult(1000,1001,intent2);
+                                button1.setText(name3);
                             }
                         }
                     }
@@ -118,6 +166,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }, 100, 100);//每一秒循环一次*/
+
+
+
     }
 }
 
