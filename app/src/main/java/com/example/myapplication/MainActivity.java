@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 if(requestCode==1000){
                     if(resultCode == 1001&&data!=null){
                         name3=data.getStringExtra("dataFromNext");
-                        flag=1;
+
                     }
                 }
             }
@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             if(flag==1){
                                 Intent intent2=getIntent();
+                                flag=1;
                                 onActivityResult(1000,1001,intent2);
                                 button1.setText(name3);
                             }
