@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1=new Intent(MainActivity.this,NextActivity.class);
                 intent1.putExtra("data",dataToSend);
                 startActivityForResult(intent1,1000);
-                Intent intent2=getIntent();
-                onActivityResult(1000,1001,intent2);
+                flag=1;
+
             }
 
             public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
                                 button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
                             }
                             if(flag==1){
-
+                                Intent intent2=getIntent();
+                                onActivityResult(1000,1001,intent2);
                                 button1.setText(name3);
                             }
                         }
