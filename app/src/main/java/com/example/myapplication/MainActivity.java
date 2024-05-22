@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
     String element1 =".";
     String name3="aaa";
 
-
-
-
-
-
     @SuppressLint("MissingInflatedId")
     @Override
 
@@ -45,34 +40,31 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
 
 
-
-
-
-
             @Override
 
 
             public void onClick(View v) {
 
                 //传参数给next页面
+
                 String dataToSend=button1.getText().toString();
                 Intent intent1=new Intent(MainActivity.this,NextActivity.class);
                 intent1.putExtra("data",dataToSend);
                 startActivityForResult(intent1,1000);
-                flag=1;
-
+                Intent intent2=getIntent();
+                onActivityResult(1000,1001,intent2);
             }
 
             public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+
                 MainActivity.super.onActivityResult(requestCode,resultCode,data);
                 if(requestCode==1000){
                     if(resultCode == 1001&&data!=null){
                         name3=data.getStringExtra("dataFromNext");
+                        flag=1;
                     }
                 }
             }
-
-
 
         });
 
@@ -104,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
                                 button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
                             }
                             if(flag==1){
-                                Intent intent2=getIntent();
-                                onActivityResult(1000,1001,intent2);
+
                                 button1.setText(name3);
                             }
                         }

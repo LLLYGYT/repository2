@@ -30,8 +30,9 @@ public class NextActivity extends AppCompatActivity {
        button1.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent resultIntent=new Intent();
+               Intent resultIntent=new Intent(NextActivity.this,MainActivity.class);
                resultIntent.putExtra("dataFromNext","我回来了"+element);
+               startActivity(resultIntent);
                setResult(1001,resultIntent);
                finish();
 
