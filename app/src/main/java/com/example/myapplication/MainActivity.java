@@ -15,13 +15,13 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     int i = 0;
-    int flag=0;
+    int flag = 0;
     Button button1;
-//    ProgressBar progressBar;
+    //    ProgressBar progressBar;
 //    TextView textView;
-    ArrayList<String> shenglvehao=new ArrayList<String>();
-    String element1 =".";
-    String name3="aaa";
+    ArrayList<String> shenglvehao = new ArrayList<String>();
+    String element1 = ".";
+    String name3 = "aaa";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,75 +30,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         shenglvehao.add(".");
         shenglvehao.add("..");
         shenglvehao.add("...");
-        button1=findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-
-
-            public void onClick(View v) {
-
-                //传参数给next页面
-
-                String dataToSend=button1.getText().toString();
-                Intent intent1=new Intent(MainActivity.this,NextActivity.class);
-                intent1.putExtra("data",dataToSend);
-                startActivityForResult(intent1,1000);
-                Intent intent2=getIntent();
-                onActivityResult(1000,1001,intent2);
-            }
-
-            public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-
-                MainActivity.super.onActivityResult(requestCode,resultCode,data);
-                if(requestCode==1000){
-                    if(resultCode == 1001&&data!=null){
-                        name3=data.getStringExtra("dataFromNext");
-                        flag=1;
-                    }
-                }
-            }
-
+        button1 = findViewById(R.id.button1);
+        button1.setOnClickListener(v -> {
+            //传参数给next页面
+            String dataToSend = button1.getText().toString();
+            Intent intent1 = new Intent(MainActivity.this, NextActivity.class);
+            intent1.putExtra("data", dataToSend);
+            startActivityForResult(intent1, 1000);
         });
-
-
-
-
-
-
         //变化的按钮文字
         Timer timer = new Timer();//设置计时器，学一下线程
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                //将子线程传回到主线程更新到UI
+                runOnUiThread(() -> {
+                    i++;//i++;//每进行一次循环，i自增
+                    if (i == 4) {
+                        i = 0;
+                    } else {
+                        //progressBar.setProgress(i);//随i显示进度
+                        if (i == 0) {
+                            i = i + 1;
+                        }
+                        if (flag == 0) {
+                            element1 = shenglvehao.get(i - 1);
+                            button1.setText("领域展开" + shenglvehao.get(i - 1));//显示当前进度
+                        }
+                        if (flag == 1) {
 
-                runOnUiThread(new Runnable() {//将子线程传回到主线程更新到UI
-                    @Override
-                    public void run() {
-                        i++;//i++;//每进行一次循环，i自增
-                        if (i == 4) {
-                            i=0;
-                        } else {
-                            //progressBar.setProgress(i);//随i显示进度
-                            if(i==0){
-                                i=i+1;
-                            }
-                            if(flag==0)
-                            {
-                                element1 =shenglvehao.get(i-1);
-                                button1.setText("领域展开" + shenglvehao.get(i-1) );//显示当前进度
-                            }
-                            if(flag==1){
-
-                                button1.setText(name3);
-                            }
+                            button1.setText(name3);
                         }
                     }
                 });
@@ -159,7 +123,17 @@ public class MainActivity extends AppCompatActivity {
         }, 100, 100);//每一秒循环一次*/
 
 
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        MainActivity.super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000) {
+            if (resultCode == 1001 && data != null) {
+                name3 = data.getStringExtra("dataFromNext");
+                flag = 1;
+            }
+        }
     }
 }
 
