@@ -14,7 +14,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     int i = 0;
-    int flag = 0;
+    int Flag_1 = 0;
     Button button1;
     //    ProgressBar progressBar;
 //    TextView textView;
@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
                         if (i == 0) {
                             i = i + 1;
                         }
-                        if (flag == 0) {
+                        if (Flag_1 == 0) {
                             element1 = shenglvehao.get(i - 1);
                             button1.setText("领域展开" + shenglvehao.get(i - 1));//显示当前进度
                         }
-                        if (flag == 1) {
+                        if (Flag_1 == 1) {
                             button1.setText(name3);
                         }
                     }
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1000) {
             if (resultCode == 1001 && data != null) {
                 name3 = data.getStringExtra("dataFromNext");
-                flag = 1;
+                Flag_1 = 1;
             }
         }
     }
