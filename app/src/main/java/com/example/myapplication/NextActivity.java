@@ -30,13 +30,10 @@ public class NextActivity extends AppCompatActivity {
        button1.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent resultIntent=new Intent(NextActivity.this,MainActivity.class);
+               Intent resultIntent=new Intent();
                resultIntent.putExtra("dataFromNext","我回来了"+element);
-               startActivity(resultIntent);
                setResult(1001,resultIntent);
                finish();
-
-
 
 //               Intent intent1=new Intent(NextActivity.this,MainActivity.class);
 //               intent1.putExtra("name2","我回来了"+button1.getText().toString());
@@ -44,8 +41,6 @@ public class NextActivity extends AppCompatActivity {
 //               finish();
            }
         });
-
-
    }
 }
 
