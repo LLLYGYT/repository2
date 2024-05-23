@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -25,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("MissingInflatedId")
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -61,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                             button1.setText("领域展开" + shenglvehao.get(i - 1));//显示当前进度
                         }
                         if (flag == 1) {
-
                             button1.setText(name3);
                         }
                     }

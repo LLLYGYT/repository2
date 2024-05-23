@@ -35,16 +35,12 @@ public class NextActivity extends AppCompatActivity {
                setResult(1001,resultIntent);
                finish();
 
-
-
 //               Intent intent1=new Intent(NextActivity.this,MainActivity.class);
 //               intent1.putExtra("name2","我回来了"+button1.getText().toString());
 //               setResult(1001,intent1);
 //               finish();
            }
         });
-
-
    }
 }
 
