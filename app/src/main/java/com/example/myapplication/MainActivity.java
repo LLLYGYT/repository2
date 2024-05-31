@@ -14,14 +14,13 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     int i = 0;
-    int Flag_1 = 0;
+    int flag = 0;
     Button button1;
     //    ProgressBar progressBar;
-//    TextView textView;
+    //    TextView textView;
     ArrayList<String> shenglvehao = new ArrayList<String>();
     String element1 = ".";
-    String name3 = "aaa";
-
+    String name3 ;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             intent1.putExtra("data", dataToSend);
             startActivityForResult(intent1, 1000);
         });
+
         //变化的按钮文字
         Timer timer = new Timer();//设置计时器，学一下线程
         timer.schedule(new TimerTask() {
@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
                         if (i == 0) {
                             i = i + 1;
                         }
-                        if (Flag_1 == 0) {
+                        if (flag == 0) {
                             element1 = shenglvehao.get(i - 1);
                             button1.setText("领域展开" + shenglvehao.get(i - 1));//显示当前进度
                         }
-                        if (Flag_1 == 1) {
+                        if (flag == 1) {
                             button1.setText(name3);
                         }
                     }
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1000) {
             if (resultCode == 1001 && data != null) {
                 name3 = data.getStringExtra("dataFromNext");
-                Flag_1 = 1;
+                flag = 1;
             }
         }
     }
