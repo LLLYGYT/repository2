@@ -14,30 +14,31 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     int i = 0;
-    int flag = 0;
+    int Flag_1 = 0;
     Button button1;
-    //    ProgressBar progressBar;
-    //    TextView textView;
+    Button button2;
+//    ProgressBar progressBar;
+//   TextView textView;
     ArrayList<String> shenglvehao = new ArrayList<String>();
     String element1 = ".";
-    String name3 ;
+    String name3 = "aaa";
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         shenglvehao.add(".");
         shenglvehao.add("..");
         shenglvehao.add("...");
         button1 = findViewById(R.id.button1);
-        button1.setOnClickListener(v -> {
-            //传参数给next页面
+        button1.setOnClickListener(v -> {//传参数给next页面
             String dataToSend = button1.getText().toString();
             Intent intent1 = new Intent(MainActivity.this, NextActivity.class);
             intent1.putExtra("data", dataToSend);
             startActivityForResult(intent1, 1000);
         });
-
         //变化的按钮文字
         Timer timer = new Timer();//设置计时器，学一下线程
         timer.schedule(new TimerTask() {
@@ -48,16 +49,15 @@ public class MainActivity extends AppCompatActivity {
                     i++;//i++;//每进行一次循环，i自增
                     if (i == 4) {
                         i = 0;
-                    } else {
-                        //progressBar.setProgress(i);//随i显示进度
+                    } else {//progressBar.setProgress(i);//随i显示进度
                         if (i == 0) {
                             i = i + 1;
                         }
-                        if (flag == 0) {
+                        if (Flag_1 == 0) {
                             element1 = shenglvehao.get(i - 1);
                             button1.setText("领域展开" + shenglvehao.get(i - 1));//显示当前进度
                         }
-                        if (flag == 1) {
+                        if (Flag_1 == 1) {
                             button1.setText(name3);
                         }
                     }
@@ -65,11 +65,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 1000, 1000);//每一秒循环一次
 
-        //传参数给nextactivity
-//        Intent intent1=new Intent(this, NextActivity.class);
-//        intent1.putExtra("ELEMENT", element1);
-//        startActivity(intent1);
 
+        button2=findViewById(R.id.button_2);
+        button2.setOnClickListener(v -> {
+            Intent intent2=new Intent(MainActivity.this,WebViewActivity.class);
+            startActivity(intent2);
+        });
 
         //按下按钮 页面的跳转
 //        button1.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }, 100, 100);//每一秒循环一次*/
-
-
     }
 
     @Override
@@ -127,9 +126,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1000) {
             if (resultCode == 1001 && data != null) {
                 name3 = data.getStringExtra("dataFromNext");
-                flag = 1;
+                Flag_1 = 1;
             }
         }
     }
 }
+
+
 

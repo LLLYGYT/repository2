@@ -32,6 +32,10 @@
         android:name=".NextActivity">
     </activity>
 
+        <activity
+            android:name=".WebViewActivity">
+        </activity>
+
 
 <!--        <activity-->
 <!--            android:name=".nextActivity"-->
