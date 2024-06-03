@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -11,15 +12,19 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class WebViewActivity extends AppCompatActivity {
     public WebView webView1;
+    public H5Bridge h5Bridge1;
+
     public TextView tvTitle1;
     public long exitTime1=0;
     public int dialog_flag=1;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,16 @@ public class WebViewActivity extends AppCompatActivity {
 
         tvTitle1=findViewById(R.id.tvtitle_1);
         webView1=findViewById(R.id.webview_1);
+        webView1.setWebContentsDebuggingEnabled(true);
+
+        webView1.getSettings().setJavaScriptEnabled(true);
+        h5Bridge1=new H5Bridge(this);
+        webView1.addJavascriptInterface(h5Bridge1,"桥接");
+        h5Bridge1.context1=this;
+        //h5Bridge1.showWindow();
+
+
+
         webView1.setWebChromeClient(new WebChromeClient(){
          //设置获取到的网站title
          @Override
@@ -48,7 +63,7 @@ public class WebViewActivity extends AppCompatActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                if("https://www.baidu.com/s?wd=%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%90%8C%E8%B5%A4%E9%81%93%E5%87%A0%E5%86%85%E4%BA%9A%E6%80%BB%E7%BB%9F%E4%BC%9A%E8%B0%88&sa=fyb_n_homepage&rsv_dl=fyb_n_homepage&from=super&cl=3&tn=baidutop10&fr=top1000&rsv_idx=2&hisfilter=1".equals(url)&&dialog_flag==1){
+                if("https://bbs.twinkstar.com/forum.php?mod=viewthread&tid=8724".equals(url)&&dialog_flag==1){
                     new AlertDialog.Builder(WebViewActivity.this)
                             .setTitle("对话框")
                             .setMessage("这是text")
@@ -60,6 +75,7 @@ public class WebViewActivity extends AppCompatActivity {
                                 }
                             })
                             .show();
+
                 }
             }
         });
