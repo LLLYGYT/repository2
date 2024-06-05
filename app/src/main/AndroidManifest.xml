@@ -37,6 +37,9 @@
             android:name=".WebViewActivity">
         </activity>
 
+        <activity
+            android:name=".WebViewActivity2">
+        </activity>
 
 <!--        <activity-->
 <!--            android:name=".nextActivity"-->

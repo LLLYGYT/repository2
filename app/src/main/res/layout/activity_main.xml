@@ -100,7 +100,7 @@
         android:id="@+id/button_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="桥接"
+        android:text="JS交互"
         android:layout_marginTop="400dp"/>
     <!--
         <ProgressBar

@@ -72,6 +72,12 @@ public class WebViewActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     webView1.reload();
                                     dialog_flag=2;
+                                    webView1.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            webView1.evaluateJavascript("javascriptFunction()", null);
+                                        }
+                                    });
                                 }
                             })
                             .show();

@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
 
     Button button3;
+
+
 //    ProgressBar progressBar;
 //   TextView textView;
     ArrayList<String> shenglvehao = new ArrayList<String>();
@@ -80,10 +82,14 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent3=new Intent(MainActivity.this,WebViewActivity2.class);
+                startActivity(intent3);
 
             }
         });
+
+
+
 
         //按下按钮 页面的跳转
 //        button1.setOnClickListener(new View.OnClickListener() {
